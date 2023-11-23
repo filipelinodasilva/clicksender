@@ -1,0 +1,372 @@
+[33mcommit f0996b502d93139ed901ec384365edb70ba56305[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Filipe Lino <filipelinodasilva@hotmail.com>
+Date:   Wed Nov 22 19:19:45 2023 -0300
+
+    first commit
+
+[1mdiff --git a/backend/.editorconfig b/backend/.editorconfig[m
+[1mnew file mode 100644[m
+[1mindex 0000000..11695db[m
+[1m--- /dev/null[m
+[1m+++ b/backend/.editorconfig[m
+[36m@@ -0,0 +1,9 @@[m
+[32m+[m[32mroot = true[m
+[32m+[m
+[32m+[m[32m[*][m
+[32m+[m[32mend_of_line = lf[m
+[32m+[m[32mindent_style = space[m
+[32m+[m[32mindent_size = 2[m
+[32m+[m[32mcharset = utf-8[m
+[32m+[m[32mtrim_trailing_whitespace = true[m
+[32m+[m[32minsert_final_newline = true[m
+[1mdiff --git a/backend/.eslintignore b/backend/.eslintignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..77b9a34[m
+[1m--- /dev/null[m
+[1m+++ b/backend/.eslintignore[m
+[36m@@ -0,0 +1,3 @@[m
+[32m+[m[32m/*.js[m
+[32m+[m[32mnode_modules[m
+[32m+[m[32mdist[m
+[1mdiff --git a/backend/.eslintrc.json b/backend/.eslintrc.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..aa015fa[m
+[1m--- /dev/null[m
+[1m+++ b/backend/.eslintrc.json[m
+[36m@@ -0,0 +1,49 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "env": {[m
+[32m+[m[32m    "es2021": true,[m
+[32m+[m[32m    "node": true,[m
+[32m+[m[32m    "jest": true[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "extends": [[m
+[32m+[m[32m    "airbnb-base",[m
+[32m+[m[32m    "plugin:@typescript-eslint/recommended",[m
+[32m+[m[32m    "prettier/@typescript-eslint",[m
+[32m+[m[32m    "plugin:prettier/recommended"[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "parser": "@typescript-eslint/parser",[m
+[32m+[m[32m  "parserOptions": {[m
+[32m+[m[32m    "ecmaVersion": 12,[m
+[32m+[m[32m    "sourceType": "module"[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "plugins": ["@typescript-eslint", "prettier"],[m
+[32m+[m[32m  "rules": {[m
+[32m+[m[32m    "@typescript-eslint/no-non-null-assertion": "off",[m
+[32m+[m[32m    "@typescript-eslint/no-unused-vars": [[m
+[32m+[m[32m      "error",[m
+[32m+[m[32m      { "argsIgnorePattern": "_" }[m
+[32m+[m[32m    ],[m
+[32m+[m[32m    "import/prefer-default-export": "off",[m
+[32m+[m[32m    "no-console": "off",[m
+[32m+[m[32m    "no-param-reassign": "off",[m
+[32m+[m[32m    "prettier/prettier": "error",[m
+[32m+[m[32m    "import/extensions": [[m
+[32m+[m[32m      "error",[m
+[32m+[m[32m      "ignorePackages",[m
+[32m+[m[32m      {[m
+[32m+[m[32m        "ts": "never"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    ],[m
+[32m+[m[32m    "quotes": [[m
+[32m+[m[32m      1,[m
+[32m+[m[32m      "double",[m
+[32m+[m[32m      {[m
+[32m+[m[32m        "avoidEscape": true[m
+[32m+[m[32m      }[m
+[32m+[m[32m    ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  "settings": {[m
+[32m+[m[32m    "import/resolver": {[m
+[32m+[m[32m      "typescript": {}[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[1mdiff --git a/backend/.gitignore b/backend/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1c092bc[m
+[1m--- /dev/null[m
+[1m+++ b/backend/.gitignore[m
+[36m@@ -0,0 +1,16 @@[m
+[32m+[m[32mnode_modules[m
+[32m+[m[32mpublic/*[m
+[32m+[m[32mdist[m
+[32m+[m[32m!public/.gitkeep[m
+[32m+[m[32m.env[m
+[32m+[m[32m.env.test[m
+[32m+[m
+[32m+[m[32mpackage-lock.json[m
+[32m+[m[32myarn.lock[m
+[32m+[m[32myarn-error.log[m
+[32m+[m
+[32m+[m[32m/src/config/sentry.js[m
+[32m+[m
+[32m+[m[32m# Ignore test-related files[m
+[32m+[m[32m/coverage.data[m
+[32m+[m[32m/coverage/[m
+[1mdiff --git a/backend/.sequelizerc b/backend/.sequelizerc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..264f851[m
+[1m--- /dev/null[m
+[1m+++ b/backend/.sequelizerc[m
+[36m@@ -0,0 +1,8 @@[m
+[32m+[m[32mconst { resolve } = require("path");[m
+[32m+[m
+[32m+[m[32mmodule.exports = {[m
+[32m+[m[32m  "config": resolve(__dirname, "dist", "config", "database.js"),[m
+[32m+[m[32m  "modules-path": resolve(__dirname, "dist", "models"),[m
+[32m+[m[32m  "migrations-path": resolve(__dirname, "dist", "database", "migrations"),[m
+[32m+[m[32m  "seeders-path": resolve(__dirname, "dist", "database", "seeds")[m
+[32m+[m[32m};[m
+[1mdiff --git a/backend/certs/coloque_seus_certificado_aqui b/backend/certs/coloque_seus_certificado_aqui[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8b13789[m
+[1m--- /dev/null[m
+[1m+++ b/backend/certs/coloque_seus_certificado_aqui[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m
+[1mdiff --git a/backend/jest.config.js b/backend/jest.config.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..76c1b57[m
+[1m--- /dev/null[m
+[1m+++ b/backend/jest.config.js[m
+[36m@@ -0,0 +1,186 @@[m
+[32m+[m[32m/*[m
+[32m+[m[32m * For a detailed explanation regarding each configuration property, visit:[m
+[32m+[m[32m * https://jestjs.io/docs/en/configuration.html[m
+[32m+[m[32m */[m
+[32m+[m
+[32m+[m[32mmodule.exports = {[m
+[32m+[m[32m  // All imported modules in your tests should be mocked automatically[m
+[32m+[m[32m  // automock: false,[m
+[32m+[m
+[32m+[m[32m  // Stop running tests after `n` failures[m
+[32m+[m[32m  bail: 1,[m
+[32m+[m
+[32m+[m[32m  // The directory where Jest should store its cached dependency information[m
+[32m+[m[32m  // cacheDirectory: "/tmp/jest_rs",[m
+[32m+[m
+[32m+[m[32m  // Automatically clear mock calls and instances between every test[m
+[32m+[m[32m  clearMocks: true,[m
+[32m+[m
+[32m+[m[32m  // Indicates whether the coverage information should be collected while executing the test[m
+[32m+[m[32m  collectCoverage: true,[m
+[32m+[m
+[32m+[m[32m  // An array of glob patterns indicating a set of files for which coverage information should be collected[m
+[32m+[m[32m  collectCoverageFrom: ["<rootDir>/src/services/**/*.ts"],[m
+[32m+[m
+[32m+[m[32m  // The directory where Jest should output its coverage files[m
+[32m+[m[32m  coverageDirectory: "coverage",[m
+[32m+[m
+[32m+[m[32m  // An array of regexp pattern strings used to skip coverage collection[m
+[32m+[m[32m  // coveragePathIgnorePatterns: [[m
+[32m+[m[32m  //   "/node_modules/"[m
+[32m+[m[32m  // ],[m
+[32m+[m
+[32m+[m[32m  // Indicates which provider should be used to instrument code for coverage[m
+[32m+[m[32m  coverageProvider: "v8",[m
+[32m+[m
+[32m+[m[32m  // A list of reporter names that Jest uses when writing coverage reports[m
+[32m+[m[32m  coverageReporters: ["text", "lcov"],[m
+[32m+[m
+[32m+[m[32m  // An object that configures minimum threshold enforcement for coverage results[m
+[32m+[m[32m  // coverageThreshold: undefined,[m
+[32m+[m
+[32m+[m[32m  // A path to a custom dependency extractor[m
+[32m+[m[32m  // dependencyExtractor: undefined,[m
+[32m+[m
+[32m+[m[32m  // Make calling deprecated APIs throw helpful error messages[m
+[32m+[m[32m  // errorOnDeprecated: false,[m
+[32m+[m
+[32m+[m[32m  // Force coverage collection from ignored files using an array of glob patterns[m
+[32m+[m[32m  // forceCoverageMatch: [],[m
+[32m+[m
+[32m+[m[32m  // A path to a module which exports an async function that is triggered once before all test suites[m
+[32m+[m[32m  // globalSetup: undefined,[m
+[32m+[m
+[32m+[m[32m  // A path to a module which exports an async function that is triggered once after all test suites[m
+[32m+[m[32m  // globalTeardown: undefined,[m
+[32m+[m
+[32m+[m[32m  // A set of global variables that need to be available in all test environments[m
+[32m+[m[32m  // globals: {},[m
+[32m+[m
+[32m+[m[32m  // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.[m
+[32m+[m[32m  // maxWorkers: "50%",[m
+[32m+[m
+[32m+[m[32m  // An array of directory names to be searched recursively up from the requiring module's location[m
+[32m+[m[32m  // moduleDirectories: [[m
+[32m+[m[32m  //   "node_modules"[m
+[32m+[m[32m  // ],[m
+[32m+[m
+[32m+[m[32m  // An array of file extensions your modules use[m
+[32m+[m[32m  // moduleFileExtensions: [[m
+[32m+[m[32m  //   "js",[m
+[32m+[m[32m  //   "json",[m
+[32m+[m[32m  //   "jsx",[m
+[32m+[m[32m  //   "ts",[m
+[32m+[m[32m  //   "tsx",[m
+[32m+[m[32m  //   "node"[m
+[32m+[m[32m  // ],[m
+[32m+[m
+[32m+[m[32m  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module[m
+[32m+[m[32m  // moduleNameMapper: {},[m
+[32m+[m
+[32m+[m[32m  // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader[m
+[32m+[m[32m  // modulePathIgnorePatterns: [],[m
+[32m+[m
+[32m+[m[32m  // Activates notifications for test results[m
+[32m+[m[32m  // notify: false,[m
+[32m+[m
+[32m+[m[32m  // An enum that specifies notification mode. Requires { notify: true }[m
+[32m+[m[32m  // notifyMode: "failure-change",[m
+[32m+[m
+[32m+[m[32m  // A preset that is used as a base for Jest's configuration[m
+[32m+[m[32m  preset: "ts-jest",[m
+[32m+[m
+[32m+[m[32m  // Run tests from one or more projects[m
+[32m+[m[32m  // projects: undefined,[m
+[32m+[m
+[32m+[m[32m  // Use this configuration option to add custom reporters to Jest[m
+[32m+[m[32m  // reporters: undefined,[m
+[32m+[m
+[32m+[m[32m  // Automatically reset mock state between every test[m
+[32m+[m[32m  // resetMocks: false,[m
+[32m+[m
+[32m+[m[32m  // Reset the module registry before running each individual test[m
+[32m+[m[32m  // resetModules: false,[m
+[32m+[m
+[32m+[m[32m  // A path to a custom resolver[m
+[32m+[m[32m  // resolver: undefined,[m
+[32m+[m
+[32m+[m[32m  // Automatically restore mock state between every test[m
+[32m+[m[32m  // restoreMocks: false,[m
+[32m+[m
+[32m+[m[32m  // The root directory that Jest should scan for tests and modules within[m
+[32m+[m[32m  // rootDir: undefined,[m
+[32m+[m
+[32m+[m[32m  // A list of paths to directories that Jest should use to search for files in[m
+[32m+[m[32m  // roots: [[m
+[32m+[m[32m  //   "<rootDir>"[m
+[32m+[m[32m  // ],[m
+[32m+[m
+[32m+[m[32m  // Allows you to use a custom runner instead of Jest's default test runner[m
+[32m+[m[32m  // runner: "jest-runner",[m
+[32m+[m
+[32m+[m[32m  // The paths to modules that run some code to configure or set up the testing environment before each test[m
+[32m+[m[32m  // setupFiles: [],[m
+[32m+[m
+[32m+[m[32m  // A list of paths to modules that run some code to configure or set up the testing framework before each test[m
+[32m+[m[32m  // setupFilesAfterEnv: [],[m
+[32m+[m
+[32m+[m[32m  // The number of seconds after which a test is considered as slow and reported as such in the results.[m
+[32m+[m[32m  // slowTestThreshold: 5,[m
+[32m+[m
+[32m+[m[32m  // A list of paths to snapshot serializer modules Jest should use for snapshot testing[m
+[32m+[m[32m  // snapshotSerializers: [],[m
+[32m+[m
+[32m+[m[32m  // The test environment that will be used for testing[m
+[32m+[m[32m  testEnvironment: "node",[m
+[32m+[m
+[32m+[m[32m  // Options that will be passed to the testEnvironment[m
+[32m+[m[32m  // testEnvironmentOptions: {},[m
+[32m+[m
+[32m+[m[32m  // Adds a location field to test results[m
+[32m+[m[32m  // testLocationInResults: false,[m
+[32m+[m
+[32m+[m[32m  // The glob patterns Jest uses to detect test files[m
+[32m+[m[32m  testMatch: ["**/__tests__/**/*.spec.ts"][m
+[32m+[m
+[32m+[m[32m  // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped[m
+[32m+[m[32m  // testPathIgnorePatterns: [[m
+[32m+[m[32m  //   "/node_modules/"[m
+[32m+[m[32m  // ],[m
+[32m+[m
+[32m+[m[32m  // The regexp pattern or array of patterns that Jest uses to detect test files[m
+[32m+[m[32m  // testRegex: [],[m
+[32m+[m
+[32m+[m[32m  // This option allows the use of a custom results processor[m
+[32m+[m[32m  // testResultsProcessor: undefined,[m
+[32m+[m
+[32m+[m[32m  // This option allows use of a custom test runner[m
+[32m+[m[32m  // testRunner: "jasmine2",[m
+[32m+[m
+[32m+[m[32m  // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href[m
+[32m+[m[32m  // testURL: "http://localhost",[m
+[32m+[m
+[32m+[m[32m  // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"[m
+[32m+[m[32m  // timers: "real",[m
+[32m+[m
+[32m+[m[32m  // A map from regular expressions to paths to transformers[m
+[32m+[m[32m  // transform: undefined,[m
+[32m+[m
+[32m+[m[32m  // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation[m
+[32m+[m[32m  // transformIgnorePatterns: [[m
+[32m+[m[32m  //   "/node_modules/",[m
+[32m+[m[32m  //   "\\.pnp\\.[^\\/]+$"[m
+[32m+[m[32m  // ],[m
+[32m+[m
+[32m+[m[32m  // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them[m
+[32m+[m[32m  // unmockedModulePathPatterns: undefined,[m
+[32m+[m
+[32m+[m[32m  // Indicates whether each individual test should be reported during the run[m
+[32m+[m[32m  // verbose: undefined,[m
+[32m+[m
+[32m+[m[32m  // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode[m
+[32m+[m[32m  // watchPathIgnorePatterns: [],[m
+[32m+[m
+[32m+[m[32m  // Whether to use watchman for file crawling[m
+[32m+[m[32m  // watchman: true,[m
+[32m+[m[32m};[m
+[1mdiff --git a/backend/package.json b/backend/package.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ce99f93[m
+[1m--- /dev/null[m
+[1m+++ b/backend/package.json[m
+[36m@@ -0,0 +1,91 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "name": "backend",[m
+[32m+[m[32m  "version": "1.0.0",[m
+[32m+[m[32m  "description": "",[m
+[32m+[m[32m  "main": "index.js",[m
+[32m+[m[32m  "scripts": {[m
+[32m+[m[32m    "build": "tsc",[m
+[32m+[m[32m    "watch": "tsc -w",[m
+[32m+[m[32m    "start": "nodemon dist/server.js",[m
+[32m+[m[32m    "dev:server": "ts-node-dev --respawn --transpile-only --ignore node_modules src/server.ts",[m
+[32m+[m[32m    "db:migrate": "npx sequelize db:migrate",[m
+[32m+[m[32m    "db:seed": "sequelize db:seed:all",[m
+[32m+[m[32m    "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",[m
+[32m+[m[32m    "test": "NODE_ENV=test jest",[m
+[32m+[m[32m    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",[m
+[32m+[m[32m    "lint": "eslint src/**/*.ts"[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "author": "",[m
+[32m+[m[32m  "license": "MIT",[m
+[32m+[m[32m  "dependencies": {[m
+[32m+[m[32m    "@whiskeysockets/baileys": "github:WhiskeySockets/Baileys",[m
+[32m+[m[32m    "@adiwajshing/keyed-db": "^0.2.4",[m
+[32m+[m	[32m  "@ffmpeg-installer/ffmpeg": "^1.1.0",[m
+[32m+[m[32m    "@hapi/boom": "^9.1.4",[m
+[32m+[m[32m    "@sentry/node": "^6.18.1",[m
+[32m+[m[32m    "bcryptjs": "^2.4.3",[m
+[32m+[m[32m    "bull": "^4.8.2",[m
+[32m+[m[32m    "cookie-parser": "^1.4.6",[m
+[32m+[m[32m    "cors": "^2.8.5",[m
+[32m+[m[32m    "cron": "^2.1.0",[m
+[32m+[m[32m    "date-fns": "^2.28.0",[m
+[32m+[m[32m    "dotenv": "^16.0.0",[m
+[32m+[m[32m    "express": "^4.17.3",[m
+[32m+[m[32m    "express-async-errors": "^3.1.1",[m
+[32m+[m[32m    "gn-api-sdk-typescript": "^1.0.7",[m
+[32m+[m[32m    "http-graceful-shutdown": "^3.1.6",[m
+[32m+[m[32m    "jsonwebtoken": "^8.5.1",[m
+[32m+[m[32m    "multer": "^1.4.4",[m
+[32m+[m[32m    "mustache": "^4.2.0",[m
+[32m+[m[32m    "mysql2": "^2.2.5",[m
+[32m+[m[32m    "nodemailer": "^6.8.0",[m
+[32m+[m[32m    "pg": "^8.7.3",[m
+[32m+[m[32m    "pino": "^8.8.0",[m
+[32m+[m[32m    "pino-pretty": "^9.1.1",[m
+[32m+[m[32m    "puppeteer": "^19.4.0",[m
+[32m+[m[32m    "qrcode-terminal": "^0.12.0",[m
